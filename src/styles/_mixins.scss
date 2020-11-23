@@ -1,0 +1,135 @@
+
+
+@mixin mlarge() {
+	@media screen and (max-width: $m-large-resolution - 1) {
+		@content;
+	}
+}
+
+@mixin large() {
+	@media screen and (max-width: $large-resolution - 1) {
+		@content;
+	}
+}
+
+@mixin xlarge() {
+	@media screen and (max-width: $x-large-resolution - 1) {
+		@content;
+	}
+}
+
+@mixin medium() {
+	@media screen and (max-width: $medium-resolution - 1) {
+		@content;
+	}
+}
+
+@mixin xmedium() {
+	@media screen and (max-width: $x-medium-resolution - 1) {
+		@content;
+	}
+}
+
+@mixin small() {
+	@media screen and (max-width: $small-resolution - 1) {
+		@content;
+	}
+}
+
+@mixin xsmall() {
+	@media screen and (max-width: $x-small-resolution) {
+		@content;
+	}
+}
+
+@mixin resize() {
+	@media screen and (max-width: $max-resolution) {
+		@content;
+	}
+}
+
+@mixin grid {
+	display:-ms-grid;
+	display: -moz-grid;
+	display: grid;
+}
+
+@mixin flex {
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+@mixin truncate($width) {
+	display: inline-block;
+	white-space: nowrap;
+    width: $width;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin truncate-multiline($width, $lines) {
+	display: block;
+	display: -webkit-box;
+    max-width: $width;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@mixin input-color($color) {
+	border-bottom-color: $color;
+    color: $color;
+	&::-webkit-input-placeholder {
+		/* WebKit, Blink, Edge */
+		color: $color;
+	}
+	&:-moz-placeholder {
+		/* Mozilla Firefox 4 to 18 */
+		color: $color;
+		opacity: 1;
+	}
+	&::-moz-placeholder {
+		/* Mozilla Firefox 19+ */
+		color: $color;
+		opacity: 1;
+	}
+	&:-ms-input-placeholder {
+		/* Internet Explorer 10-11 */
+		color: $color;
+	}
+	&::-ms-input-placeholder {
+		/* Microsoft Edge */
+		color: $color;
+	}
+	&::placeholder {
+		/* Most modern browsers support this now. */
+		color: $color;
+	}
+}
+
+@function strip-unit($value) {
+	@return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type($min-font-size, $max-font-size) {
+		$u1: unit($small-resolution);
+		$u2: unit($max-resolution);
+		$u3: unit($min-font-size);
+		$u4: unit($max-font-size);
+	
+		@if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+		& {
+			font-size: $min-font-size;
+			@media screen and (min-width: $small-resolution) {
+			font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$small-resolution}) / #{strip-unit($max-resolution - $small-resolution)}));
+			}
+			@media screen and (min-width: $max-resolution) {
+			font-size: $max-font-size;
+			}
+		}
+	}
+}

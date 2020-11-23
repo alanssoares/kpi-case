@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import App from './components/app/app';
+import Header from './components/header/header';
+import Footer from './components/footer/footer';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <BrowserRouter>
+    <Header />
     <App />
-  </React.StrictMode>,
+    <Footer />
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
