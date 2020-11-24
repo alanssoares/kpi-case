@@ -1,5 +1,11 @@
 @import-normalize;
 
+body {
+  margin: 0;
+  color: #717171;
+  font-family: "Open Sans", sans-serif;
+}
+
 /**
  * Add the correct display in IE 9-.
  */
@@ -15,4 +21,13 @@
  
  img {
    border-style: none;
+ }
+
+ ul,
+ li {
+   list-style: none;
+ }
+
+ a {
+   text-decoration: none;
  }

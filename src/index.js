@@ -1,22 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.scss';
-import App from './components/app/app';
-import Header from './components/header/header';
-import Footer from './components/footer/footer';
+import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route } from 'react-router-dom';
+import Header from './components/layout/header/header';
+import Home from './pages/home';
+import Login from './components/login/login';
+import SignUp from './components/signup/signup';
+import ForgotPassword from './components/forgot-password/forgot-password';
 
-ReactDOM.render(
+ReactDOM.render((
   <BrowserRouter>
     <Header />
-    <App />
-    <Footer />
-  </BrowserRouter>,
-  document.getElementById('root')
-);
+    <Route exact path="/" component={Home} />
+    <Route path="/login" component={Login} />
+    <Route path="/sign-up" component={SignUp} />
+    <Route path="/forgot-password" component={ForgotPassword} />
+  </BrowserRouter>
+), document.getElementById('root'));
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
