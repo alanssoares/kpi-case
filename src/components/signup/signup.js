@@ -4,7 +4,6 @@ import { Alert } from '@material-ui/lab';
 import { useAuth } from '../../context/auth';
 import { Redirect } from 'react-router-dom';
 import UserService from '../../services/user.service';
-
 import './_signup.scss';
 
 function SignUp() {

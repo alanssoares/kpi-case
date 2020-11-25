@@ -1,9 +1,11 @@
-import firebase from '../packages/firebase';
+import { database } from '../packages/firebase';
 
-const db = firebase.ref('/users');
+const db = database.ref('/users');
 
 class AuthDataService {
-    
+    login(data) {
+        return db.get(data).once('value');
+    }
 }
 
 export default new AuthDataService();
