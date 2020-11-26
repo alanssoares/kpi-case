@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import Home from '../../pages/home';
 import Login from '../login/login';
 import SignUp from '../signup/signup';
+import Feedback from '../feedback/feedback';
 import ForgotPassword from '../forgot-password/forgot-password';
 import { AuthContext } from '../../context/auth';
 
@@ -21,6 +22,7 @@ function App(props) {
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/sign-up" component={SignUp} />
+            <Route path="/feedback" component={Feedback} />
             <Route path="/forgot-password" component={ForgotPassword} />
         </AuthContext.Provider>
     )

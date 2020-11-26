@@ -10,16 +10,14 @@ function SignUp() {
 
     const [isLoggedIn, setLoggedIn] = useState(false);
     const [isError, setIsError] = useState(false);
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { setAuthTokens } = useAuth();
 
     const postSignUp = () => {
         UserService.create({
-            firstName,
-            lastName,
+            name,
             email,
             password
         }).then(result => {
@@ -38,12 +36,8 @@ function SignUp() {
         <div>
             <form className="sign-up" autoComplete="none">
                 <TextField type="text" label="Nome" autoComplete="none"
-                    value={firstName}
-                    onChange={e => { setFirstName(e.target.value); }}
-                />
-                <TextField type="text" label="Sobrenome" autoComplete="none"
-                    value={lastName}
-                    onChange={e => { setLastName(e.target.value); }}
+                    value={name}
+                    onChange={e => { setName(e.target.value); }}
                 />
                 <TextField type="text" label="E-mail" autoComplete="none"
                     value={email}
